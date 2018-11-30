@@ -21,6 +21,12 @@ writeDataTable(wb, sheet = 'Iris', x = iris, startRow = 2, startCol = 2,
 
 setColWidths(wb, sheet='Iris', widths = 'auto', cols = 1:10)
 
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color=Species))+
+  geom_point()
+
+insertPlot(wb, sheet='Iris', width=6, height=4, startRow = 2,
+           startCol = length(iris)+2)
+
 addWorksheet(wb, 'Plot')
 name <- 'test_plot'
 wd <- getwd()
