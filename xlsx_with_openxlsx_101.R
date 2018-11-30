@@ -49,3 +49,13 @@ writeFormula(wb, 'hyperlink', x = makeHyperlinkString(sheet = 'testing',
   file = paste0(name, '.png'), text='This is a hyperlink to the file'))
 
 saveWorkbook(wb, 'openxlsx_Test1.xlsx', overwrite = T)
+
+
+wb <- createWorkbook()
+addWorksheet(wb, 'merging')
+mergeCells(wb, 'merging', cols=1:10, rows = 1:2)
+writeData(wb, 'merging', x = 'This is a text that needs merging')
+hs <- createStyle(border=c("top", "bottom", "left", "right"), halign = 'center', valign = 'center', fgFill = 'grey90', fontSize = 20, 
+                  borderStyle = 'medium', textDecoration = c('bold','italic'))
+addStyle(wb, 'merging', style = hs, rows =1, cols = 1)
+saveWorkbook(wb, 'Merger.xlsx', overwrite = T)
